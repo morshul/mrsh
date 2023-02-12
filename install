@@ -5,4 +5,8 @@ if _VERSION < 'Lua 5.4' then
   os.exit(1)
 end
 
-io.stdout:write('Hello, world!\n')
+_G.assert = require('mrsh.overrides.assert')
+_G.printf = require('mrsh.overrides.printf')
+_G.fprintf = require('mrsh.overrides.fprintf')
+
+printf('Hello, world!\n')
