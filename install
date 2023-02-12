@@ -1,0 +1,8 @@
+#!/usr/bin/env lua
+
+if _VERSION < 'Lua 5.4' then
+  io.stderr:write('A desktop platform running Lua 5.4 or later is required.\n')
+  os.exit(1)
+end
+
+io.stdout:write('Hello, world!\n')
