@@ -9,4 +9,12 @@ _G.assert = require('mrsh.overrides.assert')
 _G.printf = require('mrsh.overrides.printf')
 _G.fprintf = require('mrsh.overrides.fprintf')
 
-printf('Hello, world!\n')
+_G.Object = require('mrsh.core.object')
+
+_G.ROOT = Object()
+
+ROOT:on('startup', function(self)
+  printf('Hello, %s!\n', os.getenv('USER') or 'dummy')
+end)
+
+ROOT:emit('startup')
