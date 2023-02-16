@@ -32,6 +32,8 @@ do
 end
 
 ::bootstrap::
+package.path = REPO_DIR .. '/?.lua;' .. package.path
+
 _G.assert = require('mrsh.overrides.assert')
 _G.fprintf = require('mrsh.overrides.fprintf')
 _G.printf = require('mrsh.overrides.printf')
