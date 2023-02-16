@@ -1,0 +1,10 @@
+window:
+  dimensions:
+    columns: 142
+    lines: 42
+  padding:
+    x: 12
+    y: 12
+  decorations: none
+  decorations_theme_variant: Dark
+  title: Console

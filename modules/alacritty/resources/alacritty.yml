@@ -1,0 +1,7 @@
+import:
+  - (XDG_CONFIG_HOME)/alacritty/(core)
+  - (XDG_CONFIG_HOME)/alacritty/(core::shell)
+  - (XDG_CONFIG_HOME)/alacritty/(ui::window)
+  - (XDG_CONFIG_HOME)/alacritty/(ui::fonts)
+  - (XDG_CONFIG_HOME)/alacritty/(ui::cursor)
+  - (XDG_CONFIG_HOME)/alacritty/(ui::themes::aura)

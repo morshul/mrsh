@@ -1,0 +1,9 @@
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+  vi_mode_style:
+    shape: Beam
+    blinking: Always
+  blink_interval: 750
+  blink_timeout: 0
