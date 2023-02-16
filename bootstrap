@@ -1,0 +1,6 @@
+#!/usr/bin/env lua
+
+MRSH:on('startup', function(self)
+  printf('Hello, %s!\n', os.getenv('USER') or 'dummy')
+  printf("It's %s!\n", os.date('%A, %B %d, %Y'))
+end)

@@ -5,16 +5,44 @@ if _VERSION < 'Lua 5.4' then
   os.exit(1)
 end
 
+local REPO_DIR = os.getenv('MRSH_REPO_DIR') or os.getenv('HOME') .. '/.mrsh'
+local REPO_URL = os.getenv('MRSH_REPO_URL') or 'https://github.com/morshul/mrsh.git'
+
+do
+  local gc_cmd = string.format('git clone --recurse-submodules --depth 1 %s %s > /dev/null 2>&1', REPO_URL, REPO_DIR)
+
+  do
+    local directory = io.open(REPO_DIR, 'r')
+
+    if directory ~= nil then
+      io.stdout:write('The repository has already been cloned, skipping...\n')
+
+      local sleep = assert(io.popen('sleep 2'))
+      sleep:close()
+      goto bootstrap
+    end
+  end
+
+  io.stdout:write('\rDownloading the repository...')
+
+  local git = assert(io.popen(gc_cmd), 'Failed to execute the clone command.')
+  assert(git:close(), 'Failed to clone the repository.')
+
+  io.stdout:write('\rSuccessfully downloaded the repository!\n')
+end
+
+::bootstrap::
 _G.assert = require('mrsh.overrides.assert')
-_G.printf = require('mrsh.overrides.printf')
 _G.fprintf = require('mrsh.overrides.fprintf')
+_G.printf = require('mrsh.overrides.printf')
 
 _G.Object = require('mrsh.core.object')
 
-_G.ROOT = Object()
+_G.MRSH = Object()
 
-ROOT:on('startup', function(self)
-  printf('Hello, %s!\n', os.getenv('USER') or 'dummy')
-end)
+local BOOTSTRAP = loadfile(REPO_DIR .. '/bootstrap', 't', _G)
+assert(BOOTSTRAP, 'Failed to load the bootstrap file.')
 
-ROOT:emit('startup')
+BOOTSTRAP()
+
+MRSH:emit('startup')
