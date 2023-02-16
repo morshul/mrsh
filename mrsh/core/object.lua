@@ -167,7 +167,7 @@ return function(args)
   result.__events = {}
   result.__instance = {}
 
-  result.__instance.class = args.class or {}
+  result.__instance.class = args.class
   result.__instance.auto_events = args.auto_events or false
 
   if args.auto_events then

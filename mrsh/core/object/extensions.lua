@@ -13,7 +13,6 @@ extensions.check = function(object)
   assert(type(object.__events) == 'table', 'Expected `object.__events` to be a table (got %s)', type(object.__events))
   assert(type(object.__instance) == 'table', 'Expected `object.__instance` to be a table (got %s)', type(object.__instance))
 
-  assert(type(object.__instance.class) == 'table', 'Expected `object.__instance.class` to be a table (got %s)', type(object.__instance.class))
   assert(type(object.__instance.auto_events) == 'boolean', 'Expected `object.__instance.auto_events` to be a boolean (got %s)', type(object.__instance.auto_events))
   -- stylua: ignore end
 
