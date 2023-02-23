@@ -41,6 +41,7 @@ _G.printf = require('mrsh.overrides.printf')
 _G.Object = require('mrsh.core.object')
 
 _G.MRSH = Object()
+_G.ENVSTORE = require('mrsh.core.envstore')()
 
 local BOOTSTRAP = loadfile(REPO_DIR .. '/bootstrap', 't', _G)
 assert(BOOTSTRAP, 'Failed to load the bootstrap file.')
